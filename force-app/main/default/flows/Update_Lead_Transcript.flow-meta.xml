@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Updates the transcript field on a Lead record based on Lead Name and Transcription</description>
+    <interviewLabel>Update Lead Transcript {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Lead Transcript</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Update_Lead_Transcript_Apex</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>LeadName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Transcription</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <actionCalls>
+        <name>Update_Lead_Transcript_Apex</name>
+        <label>Update Lead Transcript Apex</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>LeadTranscriptHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>leadName</name>
+            <value>
+                <elementReference>LeadName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>transcription</name>
+            <value>
+                <elementReference>Transcription</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+</Flow> 

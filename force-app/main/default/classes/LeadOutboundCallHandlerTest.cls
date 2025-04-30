@@ -3,7 +3,7 @@ private class LeadOutboundCallHandlerTest {
     @IsTest
     static void testSendPhoneNumberToServer() {
         // Set up test phone number
-        String testPhoneNumber = '1234567890';
+        String testPhoneNumber = '+1234567890';
         
         // Set up the mock callout
         Test.setMock(HttpCalloutMock.class, new PhoneOutboundCallMock());
@@ -11,7 +11,7 @@ private class LeadOutboundCallHandlerTest {
         Test.startTest();
         
         // Call the method
-        LeadOutboundCallHandler.sendPhoneNumberToServer(new List<String>{ testPhoneNumber });
+        LeadOutboundCallHandler.sendLeadInfoToServer(new List<String>{ testPhoneNumber });
         
         Test.stopTest();
     }
@@ -21,10 +21,10 @@ private class LeadOutboundCallHandlerTest {
         Test.startTest();
         
         // Test with empty list
-        LeadOutboundCallHandler.sendPhoneNumberToServer(new List<String>());
+        LeadOutboundCallHandler.sendLeadInfoToServer(new List<String>());
         
         // Test with null
-        LeadOutboundCallHandler.sendPhoneNumberToServer(null);
+        LeadOutboundCallHandler.sendLeadInfoToServer(null);
         
         Test.stopTest();
     }
